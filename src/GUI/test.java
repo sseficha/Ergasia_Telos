@@ -24,7 +24,6 @@ public class test extends Ouggriko_Frame {
     public test(ArrayList<Player> o)
     {
         super(o);
-        add(new JButton(),CENTER);
        // add(centerPanel,CENTER);
         
         

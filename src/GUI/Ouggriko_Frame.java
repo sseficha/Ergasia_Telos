@@ -280,7 +280,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         messagePanel.setPreferredSize(new Dimension(220,500));
         messagePanel.setBackground(Color.yellow);
         centerPanel.add(messagePanel);
-       // add(centerPanel,CENTER);
+        add(centerPanel,CENTER);
        
         
        myButtonsListener=new ButtonsListener(myPlayers,myDominoLine,borrowedDominoPanel,playerButtons,borrowedMessagePanel,this);
@@ -348,7 +348,8 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                     {
                         updateActionListenerHumanPlay(i);
                         Human human=(Human) myPlayers.get(i);
-                        Thread playerThread=new Thread(new ThreadHuman(counter,human,myDominoLine,borrowedMessagePanel));
+                        int place=i;
+                        Thread playerThread=new Thread(new ThreadHuman(place,counter,human,myDominoLine,borrowedMessagePanel,playerButtons));
                         playerThread.start();
                         playerThread.join();
                         if(counter.get()==myPlayers.size())

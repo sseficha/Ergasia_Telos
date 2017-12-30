@@ -8,9 +8,11 @@ package Rest;
 import Exceptions_package.HasNoTiles;
 import Exceptions_package.NothingToPlay;
 import Ougriko_package.Human;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  *
@@ -18,20 +20,41 @@ import java.util.logging.Logger;
  */
 public class ThreadHuman implements Runnable {
     
+    int place;
     AtomicInteger counter;
     Human human;
     DominoLine myDominoLine;
     MessagePanel borrowedMessagePanel;
-    public ThreadHuman(AtomicInteger counter,Human human, DominoLine myDominoLine,MessagePanel borrowedMessagePanel)
+    ArrayList<ArrayList<JButton>> playerButtons;
+    public ThreadHuman(int place,AtomicInteger counter,Human human, DominoLine myDominoLine,MessagePanel borrowedMessagePanel,ArrayList<ArrayList<JButton>> playerButtons)
     {
+        this.place=place;
         this.counter=counter;
         this.human=human;
         this.myDominoLine=myDominoLine;
         this.borrowedMessagePanel=borrowedMessagePanel;
+        this.playerButtons=playerButtons;
     }
      @Override
     public void run() 
     {
+        for(int i=0;i<playerButtons.size();i++)
+        {
+            if(i!=place)
+            {
+                for(int j=0;j<playerButtons.get(i).size();j++)
+                {
+                    playerButtons.get(i).get(j).setVisible(false);
+                }
+            }
+            else
+            {
+                for(int j=0;j<playerButtons.get(i).size();j++)
+                {
+                    playerButtons.get(i).get(j).setVisible(true);
+                }
+            }
+        }
        try
        {
            do

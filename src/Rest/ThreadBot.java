@@ -55,6 +55,24 @@ public class ThreadBot implements Runnable {
     @Override
     public void run() //throws NothingToPlayBot, HasNoTiles
     {
+        for(int i=0;i<playerButtons.size();i++)
+        {
+            if(i!=place && myPlayers.get(i) instanceof Bot)
+            {
+                for(int j=0;j<playerButtons.get(i).size();j++)
+                {
+                    playerButtons.get(i).get(j).setVisible(false);
+                }
+            }
+            else
+            {
+                for(int j=0;j<playerButtons.get(i).size();j++)
+                {
+                    playerButtons.get(i).get(j).setVisible(true);
+                }
+
+            }
+        }
         try
         {
 
