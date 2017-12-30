@@ -71,12 +71,12 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
     /**
      * Creates new form Ouggriko_Frame
      */
-   private BorderLayout layout;
+   protected BorderLayout layout;
    private JPanel player1Panel;
    private JPanel player2Panel;
    private JPanel player3Panel;
    private JPanel player4Panel;
-   private JPanel centerPanel;
+   protected JPanel centerPanel;
    private ArrayList<ArrayList<JButton>> playerButtons;
    private DominoLinePanel borrowedDominoPanel;
    private JPanel dominoLinePanel;
@@ -210,27 +210,6 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
             
                 
         }
-        centerPanel=new JPanel();
-        FlowLayout centerLayout=new FlowLayout();
-        centerLayout.setAlignment(LEFT);
-        centerPanel.setLayout(centerLayout);
-        borrowedDominoPanel=new DominoLinePanel();
-        dominoLinePanel=borrowedDominoPanel.getPanel();
-        dominoLinePanel.setPreferredSize(new Dimension(450,500));
-        FlowLayout layout=new FlowLayout();
-        layout.setAlignment(LEFT);
-        dominoLinePanel.setLayout(layout);
-        //dominoLinePanel.setSize(500, 500);
-        //dominoLinePanel.setPreferredSize(new Dimension(500,500));
-       // dominoLinePanel.setBackground(Color.yellow);
-        centerPanel.add(dominoLinePanel);
-        borrowedMessagePanel=new MessagePanel(7);
-        messagePanel=borrowedMessagePanel.getPanel();
-        messagePanel.setPreferredSize(new Dimension(220,500));
-        messagePanel.setBackground(Color.yellow);
-        centerPanel.add(messagePanel);
-        add(centerPanel,CENTER);
-        myButtonsListener=new ButtonsListener(myPlayers,myDominoLine,borrowedDominoPanel,playerButtons,borrowedMessagePanel,this);
         for(int i=0;i<numberOfPlayers;i++)
         {
             Player aPlayer=round.getPlayers().get(i);
@@ -267,14 +246,53 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
 
                 playerButtons.get(i).get(temp).setIcon(icon);
                 playerButtons.get(i).get(temp).setActionCommand(j.getleft()+""+j.getright());
-                playerButtons.get(i).get(temp).addActionListener(myButtonsListener);
               //  playerButtons.get(i).get(temp).addActionListener(new ButtonsListener());
                 temp++;
             }
             
         }
+                
         
+
        
+        
+        
+        
+        
+        
+        
+        centerPanel=new JPanel();
+        FlowLayout centerLayout=new FlowLayout();
+        centerLayout.setAlignment(LEFT);
+        centerPanel.setLayout(centerLayout);
+        borrowedDominoPanel=new DominoLinePanel();
+        dominoLinePanel=borrowedDominoPanel.getPanel();
+        dominoLinePanel.setPreferredSize(new Dimension(450,500));
+        FlowLayout layout=new FlowLayout();
+        layout.setAlignment(LEFT);
+        dominoLinePanel.setLayout(layout);
+        //dominoLinePanel.setSize(500, 500);
+        //dominoLinePanel.setPreferredSize(new Dimension(500,500));
+       // dominoLinePanel.setBackground(Color.yellow);
+        centerPanel.add(dominoLinePanel);
+        borrowedMessagePanel=new MessagePanel(7);
+        messagePanel=borrowedMessagePanel.getPanel();
+        messagePanel.setPreferredSize(new Dimension(220,500));
+        messagePanel.setBackground(Color.yellow);
+        centerPanel.add(messagePanel);
+       // add(centerPanel,CENTER);
+       
+        
+       myButtonsListener=new ButtonsListener(myPlayers,myDominoLine,borrowedDominoPanel,playerButtons,borrowedMessagePanel,this);
+
+        for(int i=0;i<numberOfPlayers;i++)
+        {
+            for(int j=0;j<myPlayers.get(i).getHand().size();j++)
+            {
+                                playerButtons.get(i).get(j).addActionListener(myButtonsListener);
+
+            }
+        }
         
         
         
@@ -426,7 +444,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void playGame(){//static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -456,9 +474,13 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 Ouggriko_Frame myFrame;
                // do
                // {
-                    PlayerDialog dialog=new PlayerDialog(new Ouggriko_Frame()); 
-                    myFrame=new Ouggriko_Frame(dialog.getPlayers());
-                myFrame.setVisible(true);
+                  
+                 //   PlayerDialog dialog=new PlayerDialog(new Ouggriko_Frame());         //edo!!!!!!
+                 //   myFrame=new Ouggriko_Frame(dialog.getPlayers());                    //  allaxes!!!!
+                    myFrame=new Ouggriko_Frame(myPlayers);      //ayto bgale
+                    myFrame.setVisible(true);
+                    
+                    
                do{
                    try {
                     myFrame.play();
