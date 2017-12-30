@@ -19,7 +19,9 @@ import Solo1_package.Solo1App;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import static java.awt.FlowLayout.CENTER;
 import static java.awt.FlowLayout.LEFT;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -33,8 +35,11 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.net.URL;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -61,21 +66,33 @@ public class Solo1_Frame extends javax.swing.JFrame {
         FlowLayout layout=new FlowLayout();
         layout.setAlignment(LEFT);
         setLayout(layout);
-       // setPreferredSize(new Dimension(1000,1000));
+        setSize(935,710);
+        getContentPane().setBackground(Color.DARK_GRAY); 
         AvailableTilesPanel = new javax.swing.JPanel();
         AvailableTilesPanel.setPreferredSize(new Dimension(500,400));
 
-        AvailableTilesPanel.setBackground(new java.awt.Color(255, 51, 0));
+        AvailableTilesPanel.setBackground(Color.BLACK);
 
-        AvailableTilesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Your Tiles"));
+       // AvailableTilesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Your Tiles"));
+        TitledBorder titledBorderAvailableTiles = BorderFactory.createTitledBorder("Your Tiles");
+        AvailableTilesPanel.setBorder(titledBorderAvailableTiles);
+        titledBorderAvailableTiles.setTitleColor(Color.white);
+       
+     
 
         AvailableTilesPanel.setLayout(new java.awt.GridLayout(1, 0));
         
        // MessagePanel = new javax.swing.JPanel();
         borrowedMessagePanel=new MessagePanel(5);
         messagePanel=borrowedMessagePanel.getPanel();
-        messagePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Messages"));
+       
+       // messagePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Messages"));
+         TitledBorder titledBorderMessages = BorderFactory.createTitledBorder("Messages");
+        messagePanel.setBorder(titledBorderMessages);
+        titledBorderMessages.setTitleColor(Color.white);
         messagePanel.setPreferredSize(new Dimension(400,400));
+        messagePanel.setBackground(Color.black);
+      
 
      //   MessagePanel.setLayout(new java.awt.GridLayout(5, 1, 10, 10));
    //     MessagePanel.setPreferredSize(new Dimension(400,400));
@@ -83,9 +100,15 @@ public class Solo1_Frame extends javax.swing.JFrame {
         //myDominoLinePanel.setSize(900, 250);
         borrowedDominoPanel=new DominoLinePanel();
         dominoLinePanel=borrowedDominoPanel.getPanel();
-        dominoLinePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Domino Line"));
+        
+        //dominoLinePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Domino Line"));
+        TitledBorder titledBorderDominoLine = BorderFactory.createTitledBorder("Domino Line");
+        dominoLinePanel.setBorder(titledBorderDominoLine);
+        titledBorderDominoLine.setTitleColor(Color.white);
+        dominoLinePanel.setBackground(Color.black);
 
-        dominoLinePanel.setPreferredSize(new Dimension(900,250));
+        dominoLinePanel.setPreferredSize(new Dimension(905,250));
+       
         //DominoPanel
         add(AvailableTilesPanel);
         
@@ -106,6 +129,7 @@ public class Solo1_Frame extends javax.swing.JFrame {
         for(int i=0;i<4;i++)
         {
             buttons.add(new ArrayList<JButton>());
+            
         }
         AvailableTilesPanel.setLayout(new GridLayout(4,7,5,5));
         for(int i=0;i<4;i++)
@@ -116,6 +140,9 @@ public class Solo1_Frame extends javax.swing.JFrame {
                 String right=Integer.toString(temp.getright());
                 //JButton button=new JButton(left+""+right);            //ICON
                 JButton button=new JButton();
+                button.setBackground(Color.black);
+                 Border emptyBorder = BorderFactory.createEmptyBorder();
+                 button.setBorder(emptyBorder);
                 String imgName="Vertical "+left+""+right+".png";
                 //System.out.println(imgName);
                 //button.setIcon(icon);
@@ -266,7 +293,8 @@ public class Solo1_Frame extends javax.swing.JFrame {
             
             int place=myAvailableTiles.getTableTiles().get(line).size()-1;
             JButton button=buttons.get(line).get(place);
-            button.setEnabled(false);
+            
+            button.setVisible(false);
         }
         
      /*   public void putLabel(Tile tile,int place)
@@ -338,7 +366,7 @@ public class Solo1_Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void playGame(){//static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

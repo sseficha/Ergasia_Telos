@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Rest;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -22,6 +21,7 @@ public class MessagePanel {
     
     public MessagePanel(int nofMessages)
     {
+       
         size=nofMessages;
         messagePanel = new javax.swing.JPanel();
         messagePanel.setLayout(new java.awt.GridLayout(size, 1, 10, 10));
@@ -29,9 +29,12 @@ public class MessagePanel {
         for(int i=0;i<size;i++)
         {
             JLabel label=new JLabel();
+            label.setForeground(Color.white);
+            
             messageLabels.add(label);
             messagePanel.add(label);
         }
+        
     }
     public JPanel getPanel()
     {

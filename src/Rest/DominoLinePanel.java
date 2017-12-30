@@ -8,6 +8,7 @@ package Rest;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import static java.awt.FlowLayout.CENTER;
 import static java.awt.FlowLayout.LEFT;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,8 +38,9 @@ public class DominoLinePanel {
                 JLabel label=new JLabel("");
                 Dimension dimension=new Dimension(80,50);
                 label.setPreferredSize(dimension);
-                label.setBackground(Color.blue);
+                label.setBackground(Color.black);
                 label.setOpaque(true);
+              
                 labels.add(label);
                 dominoLinePanel.add(label);
                //
