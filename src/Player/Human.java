@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ougriko_package;
+package Player;
 
 import Exceptions_package.HasNoTiles;
 import Exceptions_package.MustChoose;
@@ -11,7 +11,7 @@ import Exceptions_package.NotAddableTile;
 import Exceptions_package.NothingToPlay;
 import Exceptions_package.OtherPlayerTile;
 import Rest.Cmd;
-import Rest.DominoLine;
+import DominoLine.DominoLine;
 import Rest.Tile;
 import java.util.HashSet;
 
@@ -41,6 +41,7 @@ public class Human extends Player{
                 counter++;
         if(counter==hand.size())
            // return true;
+            
             throw new NothingToPlay(this.name);
        // else
          //   return false;

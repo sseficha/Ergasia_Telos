@@ -14,20 +14,22 @@ import Exceptions_package.NothingToPlay;
 import Exceptions_package.NothingToPlayBot;
 import Exceptions_package.OtherPlayerTile;
 import Rest.ButtonsListener;
-import Ougriko_package.Bot;
-import Ougriko_package.Human;
-import Ougriko_package.Player;
-import Ougriko_package.Round;
+import Player.Bot;
+import Player.Human;
+import Player.Player;
+import Round.Round;
 import Rest.ButtonsListenerNotTurn;
 import Rest.Choice;
 import Rest.Cmd;
-import Rest.DominoLine;
+import DominoLine.DominoLine;
+import DominoLine.DominoLine_1;
 import Rest.DominoLinePanel;
 import Rest.MessagePanel;
 import Rest.PlayerDialog;
 import Rest.ThreadBot;
 import Rest.ThreadHuman;
 import Rest.Tile;
+import Round.Round_Ouggriko;
 import com.sun.xml.internal.ws.util.StringUtils;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.LINE_END;
@@ -71,7 +73,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
     /**
      * Creates new form Ouggriko_Frame
      */
-   protected BorderLayout layout;
+   private BorderLayout layout;
    private JPanel player1Panel;
    private JPanel player2Panel;
    private JPanel player3Panel;
@@ -89,7 +91,8 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
     
    public Ouggriko_Frame()
     {
-        
+        initComponents();
+
         //PlayerDialog dialog=new PlayerDialog(this);                                 //AAAA
         //Ouggriko_Frame(dialog.getPlayers());
         //this(new PlayerDialog(getFram).getPlayers());
@@ -106,7 +109,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         setLayout(layout);
         setLocationRelativeTo(null);
         
-        myDominoLine=new DominoLine();
+        myDominoLine=new DominoLine_1();
         //for(int i=0;i<myPlayers.size();i++)
         //    System.out.println(myPlayers.get(i).getName());
        // PlayerDialog dialog=new PlayerDialog(this);                                 //AAAA
@@ -117,7 +120,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         
        
         
-        round=new Round(myPlayers);
+        round=new Round_Ouggriko(myPlayers);
         
        // round=new Round(getPlayers());
         myPlayers=round.getPlayers();       //gia sosti seira
@@ -306,6 +309,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         //layout.setAlignment(FlowLayout.CENTER);
        // dialog.setLayout(layout);
        //play();
+       setVisible(true);
     }
     
     public JFrame getFrame()
@@ -472,6 +476,17 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         /* Create and display the form */
        // java.awt.EventQueue.invokeLater(new Runnable() {
           //  public void run() {
+             //   Ouggriko_Frame myFrame;
+               // do
+               // {
+                  
+                 //   PlayerDialog dialog=new PlayerDialog(new Ouggriko_Frame());         //edo!!!!!!
+                 //   myFrame=new Ouggriko_Frame(dialog.getPlayers());                    //  allaxes!!!!
+             //       myFrame=new Ouggriko_Frame(myPlayers);      //ayto bgale
+             //       myFrame.setVisible(true);
+                    
+              // Ouggriko_Frame myFrame=null;
+              dispose();
                 Ouggriko_Frame myFrame;
                // do
                // {
@@ -529,6 +544,8 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
             }
        // });
     }
+       // });
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

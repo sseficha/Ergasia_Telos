@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import Ougriko_package.Player;
+import Player.Player;
 import Rest.PlayerDialog;
 import static java.awt.FlowLayout.CENTER;
 import java.util.ArrayList;
@@ -16,14 +16,14 @@ import javax.swing.JFrame;
  *
  * @author Solon
  */
-public class test extends Ouggriko_Frame {
+public class test  {
 
     /**
      * @param args the command line arguments
      */
-    public test(ArrayList<Player> o)
+    public test()
     {
-        super(o);
+        
        // add(centerPanel,CENTER);
         
         
@@ -35,8 +35,10 @@ public class test extends Ouggriko_Frame {
         PlayerDialog tade=new PlayerDialog(a);
         ArrayList<Player> o=tade.getPlayers();
         a.dispose();
-        test x=new test(o);
+        Ola7_Frame x=new Ola7_Frame(o);
         x.playGame();
+        //test x=new test(o);
+        //x.playGame();
         
     }
     

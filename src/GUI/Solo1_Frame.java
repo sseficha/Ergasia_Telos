@@ -10,7 +10,9 @@ import Exceptions_package.InvalidTile;
 import Exceptions_package.NotAddableTile;
 import Rest.Choice;
 import Rest.Cmd;
-import Rest.DominoLine;
+import DominoLine.DominoLine;
+import DominoLine.DominoLine_1;
+import DominoLine.DominoLine_2;
 import Rest.DominoLinePanel;
 import Rest.MessagePanel;
 import Rest.Tile;
@@ -122,7 +124,7 @@ public class Solo1_Frame extends javax.swing.JFrame {
       //  DominoLinePanel.setLayout(layout);
         ButtonsListener myButtonsListener=new ButtonsListener();
         myAvailableTiles=new AvailableTiles();
-        myDominoLine=new DominoLine();
+        myDominoLine=new DominoLine_2();
         mySolo1App=new Solo1App();
         buttons=new ArrayList<>();
        // labels=new ArrayList<>();
@@ -282,9 +284,9 @@ public class Solo1_Frame extends javax.swing.JFrame {
             {
                borrowedMessagePanel.addMessageLabel("Congratulations! You won!");
             }
-            Cmd cmd=new Cmd();
-            cmd.showAvailableTiles(myAvailableTiles);
-            cmd.showDominoLine(myDominoLine);
+          //  Cmd cmd=new Cmd();
+          //  cmd.showAvailableTiles(myAvailableTiles);
+          //  cmd.showDominoLine(myDominoLine);
         
     }
     
@@ -366,13 +368,13 @@ public class Solo1_Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void playGame(){//static void main(String args[]) {
+   // public void playGame(){//static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+/*        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -387,16 +389,16 @@ public class Solo1_Frame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Solo1_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Solo1_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Solo1_Frame().setVisible(true);
-            }
-        });
-    }
+  //      java.awt.EventQueue.invokeLater(new Runnable() {
+     //       public void run() {
+    //            new Solo1_Frame().setVisible(true);
+     //       }
+     //   }); 
+   // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

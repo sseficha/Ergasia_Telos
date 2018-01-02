@@ -5,6 +5,7 @@
  */
 package Rest;
 
+import DominoLine.DominoLine;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

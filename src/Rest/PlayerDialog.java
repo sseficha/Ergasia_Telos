@@ -7,9 +7,11 @@ package Rest;
 
 import Exceptions_package.InvalidPlayerChoice_Number;
 import Exceptions_package.InvalidPlayerChoice_String;
-import Ougriko_package.Bot;
-import Ougriko_package.Human;
-import Ougriko_package.Player;
+import Player.Bot;
+import Player.Bot_withStack;
+import Player.Human;
+import Player.Human_withStack;
+import Player.Player;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,7 +29,7 @@ import javax.swing.JTextField;
  *
  * @author Solon
  */
-public class PlayerDialog {
+public class  PlayerDialog {
     
     private JFrame master;
     public PlayerDialog(JFrame master)
@@ -67,9 +69,9 @@ public class PlayerDialog {
                     if(getNames.get(i).isVisible())
                     {
                         if(i==0)
-                            myPlayers.add(new Human(getNames.get(i).getText(),null));
+                            myPlayers.add(new Human_withStack(getNames.get(i).getText(),null));
                         else
-                            myPlayers.add(new Bot(getNames.get(i).getText(),null));
+                            myPlayers.add(new Bot_withStack(getNames.get(i).getText(),null));
                     }
                     else
                         break;

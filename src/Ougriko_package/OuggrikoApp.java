@@ -6,8 +6,12 @@
 package Ougriko_package;
 
 import Rest.Cmd;
-import Rest.DominoLine;
+import DominoLine.DominoLine;
+import Player.Bot;
+import Player.Human;
+import Player.Player;
 import Rest.Tile;
+import Round.Round;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -99,7 +103,7 @@ public class OuggrikoApp {
     
    
     //Ενα παιχνιδι Ουγγρικο Ντομινο
-    public void playOuggriko() {
+ /*   public void playOuggriko() {
         // TODO code application logic here
        Cmd cmd=new Cmd();
        DominoLine DL;
@@ -114,11 +118,11 @@ public class OuggrikoApp {
            cmd.showPlayerPoints(round);
        }
        while(!gameIsOver(round));
-       cmd.showWinner(round.getWinner());
+       cmd.showWinner(round.getWinner());   
        
   
        
        
-    }
+    }   */
     
 }

@@ -5,12 +5,13 @@
  */
 package Rest;
 
+import DominoLine.DominoLine;
 import Exceptions_package.HasNoTiles;
 import Exceptions_package.NothingToPlay;
 import Exceptions_package.NothingToPlayBot;
-import Ougriko_package.Bot;
-import Ougriko_package.Human;
-import Ougriko_package.Player;
+import Player.Bot;
+import Player.Human;
+import Player.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -55,7 +56,7 @@ public class ThreadBot implements Runnable {
     @Override
     public void run() //throws NothingToPlayBot, HasNoTiles
     {
-        for(int i=0;i<playerButtons.size();i++)
+       /* for(int i=0;i<playerButtons.size();i++)
         {
             if(i!=place && myPlayers.get(i) instanceof Bot)
             {
@@ -72,14 +73,14 @@ public class ThreadBot implements Runnable {
                 }
 
             }
-        }
+        }*/
         try
         {
 
             do
             {
             try {
-                    Thread.sleep(2000);
+                    Thread.sleep(4000);
                     } catch (InterruptedException ex) {
                     }
                 bot.playBot(myDominoLine);
@@ -114,7 +115,7 @@ public class ThreadBot implements Runnable {
             //System.out.println("nothing to play bot");
             borrowedMessagePanel.addMessageLabel(e.getMessage());
              try {
-               Thread.sleep(2000);
+               Thread.sleep(4000);
            } catch (InterruptedException ex) {
                Logger.getLogger(ThreadHuman.class.getName()).log(Level.SEVERE, null, ex);}
             counter.set(counter.get()+1);
@@ -123,7 +124,7 @@ public class ThreadBot implements Runnable {
         {
             borrowedMessagePanel.addMessageLabel(e.getMessage());
              try {
-               Thread.sleep(2000);
+               Thread.sleep(4000);
            } catch (InterruptedException ex) {
                Logger.getLogger(ThreadHuman.class.getName()).log(Level.SEVERE, null, ex);}
             //System.out.println("has no tiles");

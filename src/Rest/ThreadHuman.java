@@ -5,9 +5,10 @@
  */
 package Rest;
 
+import DominoLine.DominoLine;
 import Exceptions_package.HasNoTiles;
 import Exceptions_package.NothingToPlay;
-import Ougriko_package.Human;
+import Player.Human;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
@@ -38,7 +39,7 @@ public class ThreadHuman implements Runnable {
      @Override
     public void run() 
     {
-        for(int i=0;i<playerButtons.size();i++)
+       /* for(int i=0;i<playerButtons.size();i++)
         {
             if(i!=place)
             {
@@ -54,7 +55,7 @@ public class ThreadHuman implements Runnable {
                     playerButtons.get(i).get(j).setVisible(true);
                 }
             }
-        }
+        }*/
        try
        {
            do
@@ -68,6 +69,7 @@ public class ThreadHuman implements Runnable {
                try {
                    Thread.sleep(100);
                } catch (InterruptedException ex) {
+                   
                }
 
            }
@@ -77,7 +79,7 @@ public class ThreadHuman implements Runnable {
        {
            borrowedMessagePanel.addMessageLabel(e.getMessage());
            try {
-               Thread.sleep(2000);
+               Thread.sleep(4000);
            } catch (InterruptedException ex) {
                Logger.getLogger(ThreadHuman.class.getName()).log(Level.SEVERE, null, ex);
            }
@@ -87,7 +89,7 @@ public class ThreadHuman implements Runnable {
        {
            borrowedMessagePanel.addMessageLabel(e.getMessage());
             try {
-               Thread.sleep(2000);
+               Thread.sleep(4000);
            } catch (InterruptedException ex) {
                Logger.getLogger(ThreadHuman.class.getName()).log(Level.SEVERE, null, ex);}
            counter.set(counter.get()+1);

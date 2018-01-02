@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ougriko_package;
+package Player;
 
 import Exceptions_package.HasNoTiles;
 import Exceptions_package.NothingToPlay;
 import Exceptions_package.NothingToPlayBot;
 import Rest.Cmd;
-import Rest.DominoLine;
+import DominoLine.DominoLine;
 import Rest.Tile;
 import java.util.HashSet;
 import javax.swing.JPanel;
@@ -63,7 +63,6 @@ public class Bot extends Player{
     public void playBot(DominoLine DL) throws NothingToPlayBot, HasNoTiles
     {
         boolean bool;
-        //throw sleep gia ligo
         if(hand.size()==0)
         {
             //return false;

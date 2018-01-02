@@ -5,14 +5,15 @@
  */
 package Rest;
 
+import DominoLine.DominoLine;
 import Exceptions_package.MustChoose;
 import Exceptions_package.NotAddableTile;
 import Exceptions_package.NothingToPlay;
 import Exceptions_package.NothingToPlayBot;
 import Exceptions_package.OtherPlayerTile;
 import GUI.Ouggriko_Frame;
-import Ougriko_package.Human;
-import Ougriko_package.Player;
+import Player.Human;
+import Player.Player;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -84,7 +85,7 @@ public class ButtonsListener implements ActionListener
             } catch (NotAddableTile ex) {
                 borrowedMessagePanel.addMessageLabel(ex.getMessage());
             } catch (OtherPlayerTile ex) {
-                borrowedMessagePanel.addMessageLabel(ex.getMessage());
+                //borrowedMessagePanel.addMessageLabel(ex.getMessage());
             } catch (MustChoose ex) {
                 Choice choice=new Choice(frame);
                 int temp=choice.choose();

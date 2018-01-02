@@ -9,7 +9,7 @@ import Exceptions_package.InvalidTile;
 import Exceptions_package.NotAddableTile;
 import Rest.Cmd;
 import Rest.Tile;
-import Rest.DominoLine;
+import DominoLine.DominoLine;
 import java.util.ArrayList;
 
 /**

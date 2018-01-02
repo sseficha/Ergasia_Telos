@@ -99,11 +99,13 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSolo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolo1ActionPerformed
-       // new Solo1_Frame().setVisible(true);
+      // new Solo1_Frame().setVisible(true);
         Solo1_Frame sl1=new Solo1_Frame();
-        sl1.playGame();
         sl1.setVisible(true);
-        setVisible(false);
+       
+        //sl1.playGame();
+        
+        //setVisible(false);
                 
         
     }//GEN-LAST:event_jButtonSolo1ActionPerformed

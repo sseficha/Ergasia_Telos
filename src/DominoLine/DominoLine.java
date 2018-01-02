@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Rest;
+package DominoLine;
 
-import Ougriko_package.Player;
+import Player.Player;
+import Rest.Tile;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,13 +15,13 @@ import java.util.Scanner;
  * η προσθηκη Tile η στο τελος η στην αρχη του ArrayList αναλογα με το που ειναι επιτρεπτο.
  * @author Solon Sefiha,Panos Papastergiou
  */
-public class DominoLine {
+public abstract class DominoLine {
     
-   private ArrayList<Tile> rowTiles;
+   protected ArrayList<Tile> rowTiles;
     
    public DominoLine()
     {
-        rowTiles=new ArrayList<Tile>(28);
+        rowTiles=new ArrayList<Tile>();
     }
     
    
@@ -32,45 +33,7 @@ public class DominoLine {
     * @return 0 αν μπαινει στην αρχη του rowTiles 1 αν μπαινει στο τελος 2 αν μπαινει και στη αρχη
     * και στο τελος και -1 αν δεν μπαινει πουθενα.
     */
-    public int whereToAdd(Tile tileToAdd) //0 gia arxi 1 gia telos 2 gia epilogi -1 gia pouthena
-    {
-        if(rowTiles.size()==0)
-            return 0;
-        int first=rowTiles.get(0).getleft();
-        int last=rowTiles.get(rowTiles.size()-1).getright();
-       // System.out.println("first is "+first);
-       // System.out.println("last is "+last);
-        for(int i=0;i<2;i++)
-        {
-            if(tileToAdd.getright()==first && tileToAdd.getleft()==last)
-            {
-                return 2;
-                
-            }
-            else if(tileToAdd.getleft()==first && tileToAdd.getright()==last)
-            {
-                tileToAdd.reverse();
-                return 2;
-                
-            }
-            else if(tileToAdd.getright()==first)
-                return 0;
-            else if(tileToAdd.getleft()==first)
-            {
-                tileToAdd.reverse();
-                return 0;
-            }
-            else if(tileToAdd.getleft()==last)
-                return 1;
-            else if(tileToAdd.getright()==last)
-            {
-                tileToAdd.reverse();
-                return 1;
-            }
-        }
-        return -1;
-      
-    }
+    public abstract int whereToAdd(Tile tileToAdd);  //0 gia arxi 1 gia telos 2 gia epilogi -1 gia pouthena
     
     /**
      * Eπιλεγει ο χρηστης αν το tileToAdd θα μπει στην αρχη η στο τελος οταν μπορει να 

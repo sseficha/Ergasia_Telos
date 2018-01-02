@@ -3,14 +3,14 @@
      * To change this template file, choose Tools | Templates
      * and open the template in the editor.
      */
-    package Ougriko_package;
+    package Player;
 import Exceptions_package.MustChoose;
 import Exceptions_package.NotAddableTile;
 import Exceptions_package.NothingToPlay;
 import Exceptions_package.NothingToPlayBot;
 import Exceptions_package.OtherPlayerTile;
     import Rest.Cmd;
-    import Rest.DominoLine;
+    import DominoLine.DominoLine;
     import Rest.Tile;
     import Rest.Shuffler;
     import java.util.ArrayList;
