@@ -5,16 +5,31 @@
  */
 package GUI;
 
+import Player.Player;
+import Rest.PlayerDialog;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Panos
  */
 public class Menu extends javax.swing.JFrame {
+    
+    private Ouggriko_Frame ouggriko;
+    private JFrame temp;
+    private Ola7_Frame ola7;
+    private PlayerDialog dialog;
+    private ArrayList<Player> players;
+    
 
     /**
      * Creates new form Menu
      */
     public Menu() {
+        //this.setTitle("DOMINOES");
+       // this.setLocationRelativeTo(CENTER);
+        //this.setLocation(null);
         initComponents();
     }
    
@@ -30,7 +45,7 @@ public class Menu extends javax.swing.JFrame {
         jPanelTop = new javax.swing.JPanel();
         jButtonSolo1 = new javax.swing.JButton();
         jButtonHungarian = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonAll7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,13 +84,18 @@ public class Menu extends javax.swing.JFrame {
         jPanelTop.add(jButtonHungarian);
         jButtonHungarian.setBounds(50, 270, 308, 25);
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("jButton3");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanelTop.add(jButton3);
-        jButton3.setBounds(50, 300, 308, 23);
+        jButtonAll7.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonAll7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jButtonAll7.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAll7.setText("ALL 7");
+        jButtonAll7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonAll7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAll7ActionPerformed(evt);
+            }
+        });
+        jPanelTop.add(jButtonAll7);
+        jButtonAll7.setBounds(50, 300, 308, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/dominoes.jpg"))); // NOI18N
         jPanelTop.add(jLabel1);
@@ -103,9 +123,7 @@ public class Menu extends javax.swing.JFrame {
         Solo1_Frame sl1=new Solo1_Frame();
         sl1.setVisible(true);
        
-        //sl1.playGame();
-        
-        //setVisible(false);
+       
                 
         
     }//GEN-LAST:event_jButtonSolo1ActionPerformed
@@ -115,12 +133,28 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelTopMouseClicked
 
     private void jButtonHungarianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHungarianActionPerformed
-        Ouggriko_Frame ouggriko=new Ouggriko_Frame();
-        ouggriko.setVisible(true);
-        ouggriko.playGame();
-        setVisible(false);
+  JFrame a=new JFrame();
+        PlayerDialog tade=new PlayerDialog(a);
+        ArrayList<Player> o=tade.getPlayers();
+        a.dispose();
+        Ouggriko_Frame x=new Ouggriko_Frame(o);
+        x.playGame();
+     
+     
+      
     }//GEN-LAST:event_jButtonHungarianActionPerformed
 
+    private void jButtonAll7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAll7ActionPerformed
+       JFrame a=new JFrame();
+        PlayerDialog tade=new PlayerDialog(a);
+        ArrayList<Player> o=tade.getPlayers();
+        a.dispose();
+        Ola7_Frame x=new Ola7_Frame(o);
+        x.playGame();
+    }//GEN-LAST:event_jButtonAll7ActionPerformed
+
+   
+    
     /**
      * @param args the command line arguments
      */
@@ -163,7 +197,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonAll7;
     private javax.swing.JButton jButtonHungarian;
     private javax.swing.JButton jButtonSolo1;
     private javax.swing.JLabel jLabel1;

@@ -65,7 +65,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
      */
     
     
-     private BorderLayout layout;
+   private BorderLayout layout;
    private JPanel player1Panel;
    private JPanel player2Panel;
    private JPanel player3Panel;
@@ -94,7 +94,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
         layout=new BorderLayout();
         setLayout(layout);
         setLocationRelativeTo(null);
-        
+        this.setForeground(Color.white);
         myDominoLine=new DominoLine_2();        //EDO EVALA DOMINOLINE_2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //for(int i=0;i<myPlayers.size();i++)
         //    System.out.println(myPlayers.get(i).getName());
@@ -123,12 +123,16 @@ public class Ola7_Frame extends javax.swing.JFrame {
         }
         player1Panel=new JPanel();
         player1Panel.setPreferredSize(new Dimension(800,100));
-        player1Panel.setBackground(Color.LIGHT_GRAY);
+        player1Panel.setBackground(Color.black);
+        player1Panel.setForeground(Color.white);
         player2Panel=new JPanel();
         player2Panel.setPreferredSize(new Dimension(800,100));
-        player2Panel.setBackground(Color.LIGHT_GRAY);
+        player2Panel.setBackground(Color.black);
+        player2Panel.setForeground(Color.white);
         player1Panel.add(new JLabel(myPlayers.get(0).getName()));         
         player2Panel.add(new JLabel(myPlayers.get(1).getName()));  
+        player1Panel.setForeground(Color.white);
+        player2Panel.setForeground(Color.white);
         //for(int j=0;j<2;j++)
         int number;
         if(numberOfPlayers==2)
@@ -151,8 +155,10 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(35,70));
-                    button.setVisible(true);
+                    button.setVisible(false);                  
+                    
                     extraButtons.get(0).add(button);
+                    
                     player1Panel.add(button);
 
                 }
@@ -176,7 +182,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(35,70));
-                    button.setVisible(true);
+                    button.setVisible(false);
                     extraButtons.get(1).add(button);
                     player2Panel.add(button);
 
@@ -193,7 +199,8 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 player4Panel.add(new JLabel(myPlayers.get(3).getName()));             //allaxe button
 
                 player4Panel.setPreferredSize(new Dimension(100,700));
-                player4Panel.setBackground(Color.LIGHT_GRAY);
+                player4Panel.setBackground(Color.black);
+                player4Panel.setForeground(Color.white);
                 for(int i=0;i<5;i++)
                 {
                     JButton button=new JButton();
@@ -205,7 +212,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(70,35));
-                    button.setVisible(true);
+                    button.setVisible(false);
                     extraButtons.get(3).add(button);
                     player4Panel.add(button);
 
@@ -225,7 +232,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(70,35));
-                    button.setVisible(true);
+                    button.setVisible(false);
                     extraButtons.get(1).add(button);
                     player2Panel.add(button);
 
@@ -236,7 +243,8 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 player3Panel.add(new JLabel(myPlayers.get(2).getName()));          //allaxe button
 
                 player3Panel.setPreferredSize(new Dimension(800,100));
-                player3Panel.setBackground(Color.LIGHT_GRAY);
+                player3Panel.setBackground(Color.black);
+                player3Panel.setForeground(Color.white);
                 for(int i=0;i<5;i++)
                 {
                     JButton button=new JButton();
@@ -248,7 +256,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(35,70));
-                    button.setVisible(true);
+                    button.setVisible(false);
                     extraButtons.get(2).add(button);
                     player3Panel.add(button);
 
@@ -267,19 +275,23 @@ public class Ola7_Frame extends javax.swing.JFrame {
         
         
         
-        
+       
         centerPanel=new JPanel();
+        centerPanel.setBackground(Color.black);
         FlowLayout centerLayout=new FlowLayout();
         centerLayout.setAlignment(LEFT);
         centerPanel.setLayout(centerLayout);
         borrowedDominoPanel=new DominoLinePanel();
         dominoLinePanel=borrowedDominoPanel.getPanel();
         dominoLinePanel.setPreferredSize(new Dimension(450,400));
+        dominoLinePanel.setBackground(Color.DARK_GRAY);
         pass=new JButton("pass");
         pass.setPreferredSize(new Dimension(150,100));
+        pass.setIcon(new ImageIcon(getClass().getResource("Buttons/pass.jpg")));
         dominoLinePanel.add(pass);
         draw=new JButton("Draw");
         draw.setPreferredSize(new Dimension(150,100));
+        draw.setIcon(new ImageIcon(getClass().getResource("Buttons/draw.jpg")));
         dominoLinePanel.add(draw);
         
         draw.addActionListener(new ActionListener(){
@@ -299,11 +311,13 @@ public class Ola7_Frame extends javax.swing.JFrame {
                         {
                             if(extraButtons.get(i).get(j).getIcon()==null)
                             {
-                                String imgName="Vertical "+tileDrawn.getleft()+""+tileDrawn.getright()+".png";
+                                //String imgName="Vertical "+tileDrawn.getleft()+""+tileDrawn.getright()+".png";
+                                String imgName= Update.getImgName(i, tileDrawn,numberOfPlayers);
                                 URL url=getClass().getResource("Tiles/"+imgName);
                                 ImageIcon icon=new ImageIcon(url);
                                 extraButtons.get(i).get(j).setIcon(icon);
                                 extraButtons.get(i).get(j).setActionCommand(tileDrawn.getleft()+""+tileDrawn.getright());
+                                extraButtons.get(i).get(j).setVisible(true);
                                 break;
                             }
                         }
@@ -335,7 +349,8 @@ public class Ola7_Frame extends javax.swing.JFrame {
         borrowedMessagePanel=new MessagePanel(7);
         messagePanel=borrowedMessagePanel.getPanel();
         messagePanel.setPreferredSize(new Dimension(220,500));
-        messagePanel.setBackground(Color.yellow);
+        messagePanel.setBackground(Color.DARK_GRAY);
+        messagePanel.setForeground(Color.white);
         centerPanel.add(messagePanel);
         add(centerPanel,CENTER);
        
@@ -397,6 +412,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 playerButtons.get(i).get(temp).setActionCommand(j.getleft()+""+j.getright());
               //  playerButtons.get(i).get(temp).addActionListener(new ButtonsListener());
                 temp++;
+     
             }
             
         }

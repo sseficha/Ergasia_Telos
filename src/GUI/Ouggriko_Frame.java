@@ -103,19 +103,23 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
        return myPlayers;
    }
     public Ouggriko_Frame(ArrayList<Player> myPlayers) {
+        
         initComponents();
         setSize(900,700);
         layout=new BorderLayout();
         setLayout(layout);
         setLocationRelativeTo(null);
-        
         myDominoLine=new DominoLine_1();
+        this.myPlayers=myPlayers;
+        this.setBackground(Color.black);
+        //this.setVisible(true);
+        
         //for(int i=0;i<myPlayers.size();i++)
         //    System.out.println(myPlayers.get(i).getName());
-       // PlayerDialog dialog=new PlayerDialog(this);                                 //AAAA
+        //PlayerDialog dialog=new PlayerDialog(this);                                 //AAAA
         //myPlayers=dialog.getPlayers();
-        this.myPlayers=myPlayers;
-        //myPlayers=getPlayers();
+        
+       //myPlayers=getPlayers();
         //int numberOfPlayers=myPlayers.size();        ///?????
         
        
@@ -132,10 +136,10 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         }
         player1Panel=new JPanel();
         player1Panel.setPreferredSize(new Dimension(800,100));
-        player1Panel.setBackground(Color.LIGHT_GRAY);
+        player1Panel.setBackground(Color.black);
         player2Panel=new JPanel();
         player2Panel.setPreferredSize(new Dimension(800,100));
-        player2Panel.setBackground(Color.LIGHT_GRAY);
+        player2Panel.setBackground(Color.black);
         player1Panel.add(new JLabel(myPlayers.get(0).getName()));         
         player2Panel.add(new JLabel(myPlayers.get(1).getName()));  
         //for(int j=0;j<2;j++)
@@ -174,7 +178,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 player4Panel.add(new JLabel(myPlayers.get(3).getName()));             //allaxe button
 
                 player4Panel.setPreferredSize(new Dimension(100,700));
-                player4Panel.setBackground(Color.LIGHT_GRAY);
+                player4Panel.setBackground(Color.black);
                 for(int i=0;i<24/numberOfPlayers;i++)
                 {
                     JButton button=new JButton();
@@ -199,7 +203,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 player3Panel.add(new JLabel(myPlayers.get(2).getName()));          //allaxe button
 
                 player3Panel.setPreferredSize(new Dimension(800,100));
-                player3Panel.setBackground(Color.LIGHT_GRAY);
+                player3Panel.setBackground(Color.black);
                 for(int i=0;i<24/numberOfPlayers;i++)
                 {
                     JButton button=new JButton();
@@ -228,19 +232,23 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 else if(i==1 && numberOfPlayers==2)
                 {
                     imgName="Vertical "+j.getleft()+""+j.getright()+".png";
+                    //imgName="VerticalQ.png";
                 }
                 else if(i==1 && numberOfPlayers>2)
                 {
                    imgName="Horizontal "+j.getleft()+""+j.getright()+".png";
+                   //imgName="HorizontalQ.png"; 
 
                 }
                 else if(i==2)
                 {
                     imgName="Vertical "+j.getleft()+""+j.getright()+".png";
+                    //imgName="VerticalQ.png";
                 }
                 else if(i==3)
                 {
                     imgName="Horizontal "+j.getleft()+""+j.getright()+".png";
+                    //imgName="HorizontalQ.png";
 
                 }
                 URL url = getClass().getResource("Tiles/"+imgName);
@@ -271,6 +279,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         borrowedDominoPanel=new DominoLinePanel();
         dominoLinePanel=borrowedDominoPanel.getPanel();
         dominoLinePanel.setPreferredSize(new Dimension(450,500));
+        dominoLinePanel.setBackground(Color.black);
         FlowLayout layout=new FlowLayout();
         layout.setAlignment(LEFT);
         dominoLinePanel.setLayout(layout);
@@ -281,7 +290,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         borrowedMessagePanel=new MessagePanel(7);
         messagePanel=borrowedMessagePanel.getPanel();
         messagePanel.setPreferredSize(new Dimension(220,500));
-        messagePanel.setBackground(Color.yellow);
+        messagePanel.setBackground(Color.black);
         centerPanel.add(messagePanel);
         add(centerPanel,CENTER);
        
@@ -310,6 +319,8 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
        // dialog.setLayout(layout);
        //play();
        setVisible(true);
+       
+       
     }
     
     public JFrame getFrame()
@@ -331,10 +342,12 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         //do{
         AtomicInteger counter=new AtomicInteger();
         counter.set(0);
-        //round=new Round(myPlayers);
+       // round=new Round(myPlayers);
+      
         do{
             for(int i=0;i<myPlayers.size();i++)
             {
+               
                // try
                // {
                     if(myPlayers.get(i) instanceof Bot)

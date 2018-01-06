@@ -223,6 +223,7 @@ public class ThreadBot_withStack implements Runnable {
                                     URL url=getClass().getResource("Tiles/"+imgName);
                                     ImageIcon icon=new ImageIcon(url);
                                     extraButtons.get(place).get(i).setIcon(icon);
+                                    extraButtons.get(place).get(i).setVisible(true);
                                     extraButtons.get(place).get(i).setActionCommand(tile.getleft()+""+tile.getright());
                                     borrowedMessagePanel.addMessageLabel("Player "+bot.getName()+"  borrowed Tile: "+tile.getleft()+"-"+tile.getright());
                                   //  try {

@@ -74,6 +74,7 @@ public class ButtonsListener implements ActionListener
                     {
                         if(ae.getActionCommand().equals(b.getActionCommand()))
                             b.setEnabled(false);
+                           // b.setVisible(false);
                     }
                 borrowedMessagePanel.addMessageLabel("You just placed a Tile");
                 //  if(player.ownsTile(tile))

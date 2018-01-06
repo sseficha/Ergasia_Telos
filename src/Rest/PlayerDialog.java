@@ -44,7 +44,7 @@ public class  PlayerDialog {
         //JLabel nofPlayers;
         
         
-        players=new JDialog(master,"Players",true);
+        players=new JDialog(master,"Game Setup",true);
         players.setSize(500,300);
         players.setLocation(500, 200);
         players.getContentPane().setBackground(Color.GRAY);
@@ -87,19 +87,19 @@ public class  PlayerDialog {
        // x.setVisible(false);
        // giveNames.add(x);
        // players.add(this)
-        players.add(new JLabel("Give me the number of players (2-4)"));
+        players.add(new JLabel("Number of players (2-4)"));
         players.add(getNofPlayers);
         for(int i=1;i<5;i++)
         {
             JLabel label;
             if(i==1)
             {
-                label=new JLabel("Give me your name");
+                label=new JLabel("Your name");
             }
             else
             {
                 int temp=i-1;
-                label=new JLabel("Give name of bot "+temp);
+                label=new JLabel("Bot name "+temp);
             }
             label.setVisible(false);
             giveNames.add(label);
