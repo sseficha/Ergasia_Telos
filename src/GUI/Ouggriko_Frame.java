@@ -147,7 +147,9 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
             {
                 JButton button=new JButton();
                 button.setPreferredSize(new Dimension(50,80));
+                button.setBackground(Color.black);
                 playerButtons.get(0).add(button);
+                
                // if(j==0)
                     player1Panel.add(button);
               //  else
@@ -163,6 +165,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(50,80));
+                    button.setBackground(Color.black);
                     playerButtons.get(1).add(button);
                     player2Panel.add(button);
                 }
@@ -183,6 +186,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(80,50));
+                    button.setBackground(Color.black);
                     playerButtons.get(3).add(button);
                     player4Panel.add(button);
                 }
@@ -194,6 +198,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(80,50));
+                    button.setBackground(Color.black);
                     playerButtons.get(1).add(button);
                     player2Panel.add(button);
                 }
@@ -208,6 +213,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 {
                     JButton button=new JButton();
                     button.setPreferredSize(new Dimension(50,80));
+                    button.setBackground(Color.black);
                     playerButtons.get(2).add(button);
                     player3Panel.add(button);
                 }
@@ -334,6 +340,15 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
     
     //ArrayList<Player> getPlayers()
    
+    private void colorButtons(int p,int a){
+        for(JButton b: playerButtons.get(p))
+        if(a==0){
+            b.setBackground(Color.red);
+        }else{
+            b.setBackground(Color.black);
+        }
+      
+    }
     
    
     
@@ -350,10 +365,12 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                
                // try
                // {
+                colorButtons(i,0);
                     if(myPlayers.get(i) instanceof Bot)
                     {
                        updateActionListenerBotPlay();
                        Bot bot=((Bot) myPlayers.get(i));
+                       
                        int place=i;
                        Thread botThread=new Thread(new ThreadBot(counter,bot,place,myPlayers,playerButtons,borrowedMessagePanel,myDominoLine,borrowedDominoPanel));
                        botThread.start();
@@ -377,7 +394,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
              // System.out.println(counter.get()+ " o counter "+ myPlayers.size()+" to size");
              // Cmd cmd=new Cmd();
              // cmd.showDominoLine(myDominoLine);
-              
+              colorButtons(i,1);
             }
            
         }
@@ -388,6 +405,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
         {
             borrowedMessagePanel.addMessageLabel(myPlayers.get(i).getName()+" points: "+myPlayers.get(i).getPoints());
         }
+      
         //round=new Round(myPlayers);
       //  if(!round.gameIsOver())
       //  {
@@ -503,7 +521,6 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                        myFrame.setVisible(true);
                    }
             
-
                 }
                 while(myFrame.round.gameIsOver()==false);
                ArrayList<String> winners=myFrame.round.getWinner();
@@ -520,7 +537,10 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                // }
                myFrame.dispose();
                JOptionPane.showMessageDialog(myFrame,winnerMessage,"Winner",INFORMATION_MESSAGE);
-              
+               String[] a;
+                a=null;
+                 Menu.main(a);
+                  dispose();
               // try
               // {
                   // myFrame.setVisible(false);

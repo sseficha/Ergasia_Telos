@@ -5,8 +5,6 @@
  */
 package GUI;
 
-import DominoLine.DominoLine;
-import DominoLine.DominoLine_1;
 import DominoLine.DominoLine_2;
 import Player.Bot;
 import Player.Bot_withStack;
@@ -18,16 +16,11 @@ import Rest.ButtonsListenerNotTurn;
 import Rest.DominoLinePanel;
 import Rest.MessagePanel;
 import Rest.StackOfTiles;
-import Rest.ThreadBot;
 import Rest.ThreadBot_withStack;
-import Rest.ThreadHuman;
 import Rest.ThreadHuman_withStack;
 import Rest.Tile;
 import Rest.Update;
-import static Rest.Update.getImgName;
-import Round.Round;
 import Round.Round_Ola7;
-import Round.Round_Ouggriko;
 import java.awt.BorderLayout;
 import static java.awt.BorderLayout.LINE_END;
 import static java.awt.BorderLayout.LINE_START;
@@ -75,6 +68,8 @@ public class Ola7_Frame extends javax.swing.JFrame {
    private static ArrayList<ArrayList<JButton>> extraButtons;
    private JButton draw;
    private JButton pass;
+   private JLabel remainingN;
+   private JLabel remainingR;
    private DominoLinePanel borrowedDominoPanel;
    private JPanel dominoLinePanel;
    private MessagePanel borrowedMessagePanel;
@@ -129,8 +124,10 @@ public class Ola7_Frame extends javax.swing.JFrame {
         player2Panel.setPreferredSize(new Dimension(800,100));
         player2Panel.setBackground(Color.black);
         player2Panel.setForeground(Color.white);
-        player1Panel.add(new JLabel(myPlayers.get(0).getName()));         
+        player1Panel.add(new JLabel(myPlayers.get(0).getName()));
+        player1Panel.getComponent(0).setForeground(Color.white);
         player2Panel.add(new JLabel(myPlayers.get(1).getName()));  
+        player2Panel.getComponent(0).setForeground(Color.white);
         player1Panel.setForeground(Color.white);
         player2Panel.setForeground(Color.white);
         //for(int j=0;j<2;j++)
@@ -196,7 +193,8 @@ public class Ola7_Frame extends javax.swing.JFrame {
                // player2Panel.setPreferredSize(new Dimension(100,700));
                // add(player2Panel,LINE_END);
                 player4Panel=new JPanel();
-                player4Panel.add(new JLabel(myPlayers.get(3).getName()));             //allaxe button
+                player4Panel.add(new JLabel(myPlayers.get(3).getName())); 
+                player4Panel.getComponent(0).setForeground(Color.white);            //allaxe button
 
                 player4Panel.setPreferredSize(new Dimension(100,700));
                 player4Panel.setBackground(Color.black);
@@ -241,6 +239,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 add(player2Panel,LINE_END);
                 player3Panel=new JPanel();
                 player3Panel.add(new JLabel(myPlayers.get(2).getName()));          //allaxe button
+                 player3Panel.getComponent(0).setForeground(Color.white);
 
                 player3Panel.setPreferredSize(new Dimension(800,100));
                 player3Panel.setBackground(Color.black);
@@ -293,6 +292,22 @@ public class Ola7_Frame extends javax.swing.JFrame {
         draw.setPreferredSize(new Dimension(150,100));
         draw.setIcon(new ImageIcon(getClass().getResource("Buttons/draw.jpg")));
         dominoLinePanel.add(draw);
+       if(numberOfPlayers==2){
+           remainingN=new JLabel("14");
+       }else {
+           Integer i= 28-5*numberOfPlayers;
+           remainingN=new JLabel(i.toString());    
+       }
+       remainingN.setPreferredSize(new Dimension(30,30));
+       remainingN.setBackground(Color.DARK_GRAY);
+       remainingN.setForeground(Color.white);
+       dominoLinePanel.add(remainingN);
+       remainingR=new JLabel("REMAINING");
+       remainingR.setBackground(Color.DARK_GRAY);
+       remainingR.setForeground(Color.white);
+       remainingR.setPreferredSize(new Dimension(70,70));
+       dominoLinePanel.add(remainingR);
+       
         
         draw.addActionListener(new ActionListener(){
             @Override
@@ -323,6 +338,13 @@ public class Ola7_Frame extends javax.swing.JFrame {
                         }
                     }
                 }
+                String n=remainingN.getText();
+                Integer a= Integer.parseInt(n.toString());
+                
+                a--;
+                remainingN.setText(a.toString());
+                
+                
             }
             
         });
@@ -432,6 +454,15 @@ public class Ola7_Frame extends javax.swing.JFrame {
     {
         return extraButtons;
     }
+    private void colorButtons(int p,int a){
+        for(JButton b: playerButtons.get(p))
+        if(a==0){
+            b.setBackground(Color.red);
+        }else{
+            b.setBackground(Color.black);
+        }
+      
+    }
      public void play() throws InterruptedException
     {
         //do{
@@ -443,6 +474,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
             {
                // try
                // {
+                colorButtons(i,0);
                     if(myPlayers.get(i) instanceof Bot)
                     {
                        updateActionListenerBotPlay();
@@ -470,7 +502,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
              // System.out.println(counter.get()+ " o counter "+ myPlayers.size()+" to size");
              // Cmd cmd=new Cmd();
              // cmd.showDominoLine(myDominoLine);
-              
+             colorButtons(i,1); 
             }
            
         }
@@ -624,7 +656,7 @@ public class Ola7_Frame extends javax.swing.JFrame {
                        myFrame.setVisible(true);
                    }
            
-
+                    
                 }
                 while(myFrame.round.gameIsOver()==false);
                ArrayList<String> winners=myFrame.round.getWinner();
@@ -641,7 +673,11 @@ public class Ola7_Frame extends javax.swing.JFrame {
                // }
                myFrame.dispose();
                JOptionPane.showMessageDialog(myFrame,winnerMessage,"Winner",INFORMATION_MESSAGE);
-              
+              String[] a;
+                a=null;
+                 Menu.main(a);
+                  dispose();
+                  
               // try
               // {
                   // myFrame.setVisible(false);

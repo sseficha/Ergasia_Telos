@@ -279,11 +279,21 @@ public class Solo1_Frame extends javax.swing.JFrame {
                             //button.setEnabled(false);
                         }
                     }
+                String[] a;
+                a=null;
+                 Menu.main(a);
+                 dispose();
+                
             }
             else if(myAvailableTiles.hasNoMoreTiles())
             {
                borrowedMessagePanel.addMessageLabel("Congratulations! You won!");
+               String[] a;
+                a=null;
+                 Menu.main(a);
+                  dispose();
             }
+            //dispose();
           //  Cmd cmd=new Cmd();
           //  cmd.showAvailableTiles(myAvailableTiles);
           //  cmd.showDominoLine(myDominoLine);
@@ -298,6 +308,9 @@ public class Solo1_Frame extends javax.swing.JFrame {
             
             button.setVisible(false);
         }
+        
+        
+      
         
      /*   public void putLabel(Tile tile,int place)
         {
@@ -402,4 +415,14 @@ public class Solo1_Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+
+      public void run(){
+            if(!this.isActive()){
+                        String[] a;
+                    a=null;
+                 Menu.main(a);
+                  dispose();
+                    }
+            }
 }

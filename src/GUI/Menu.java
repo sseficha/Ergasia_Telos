@@ -122,6 +122,7 @@ public class Menu extends javax.swing.JFrame {
       // new Solo1_Frame().setVisible(true);
         Solo1_Frame sl1=new Solo1_Frame();
         sl1.setVisible(true);
+        this.dispose();
        
        
                 
@@ -147,6 +148,7 @@ public class Menu extends javax.swing.JFrame {
         x.playGame();            }
         });
         thread.start();
+        this.dispose();
      
      
       
@@ -166,7 +168,7 @@ public class Menu extends javax.swing.JFrame {
            
        });
        thread.start();
-        
+        this.dispose();
     }//GEN-LAST:event_jButtonAll7ActionPerformed
 
    

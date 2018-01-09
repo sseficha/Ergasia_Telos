@@ -11,12 +11,15 @@ import Exceptions_package.NotAddableTile;
 import Exceptions_package.NothingToPlay;
 import Exceptions_package.NothingToPlayBot;
 import Exceptions_package.OtherPlayerTile;
+import GUI.Ola7_Frame;
 import GUI.Ouggriko_Frame;
 import Player.Human;
 import Player.Player;
+import static com.sun.org.apache.bcel.internal.Repository.instanceOf;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.beans.Beans.isInstanceOf;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +68,16 @@ public class ButtonsListener implements ActionListener
             int right=Character.getNumericValue(string.charAt(1));
             Tile tileToAdd=new Tile(left,right);  
             try {
+             if(frame instanceof Ola7_Frame){
+                 if(player instanceof Human)
+                 if( left+right==7){
+                     throw new MustChoose();
+                 }
+             }
+               
+                
+            
+                
                 player.add(myDominoLine, tileToAdd);
                 
                  //   borrowedDominoPanel.labels.get(i).setText(myDominoLine.getrowTiles().get(i).getleft()+""+myDominoLine.getrowTiles().get(i).getright());
@@ -74,6 +87,7 @@ public class ButtonsListener implements ActionListener
                     {
                         if(ae.getActionCommand().equals(b.getActionCommand()))
                             b.setEnabled(false);
+                           
                            // b.setVisible(false);
                     }
                 borrowedMessagePanel.addMessageLabel("You just placed a Tile");
