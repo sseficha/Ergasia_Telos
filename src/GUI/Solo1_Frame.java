@@ -124,7 +124,7 @@ public class Solo1_Frame extends javax.swing.JFrame {
       //  DominoLinePanel.setLayout(layout);
         ButtonsListener myButtonsListener=new ButtonsListener();
         myAvailableTiles=new AvailableTiles();
-        myDominoLine=new DominoLine_2();
+        myDominoLine=new DominoLine_1();
         mySolo1App=new Solo1App();
         buttons=new ArrayList<>();
        // labels=new ArrayList<>();

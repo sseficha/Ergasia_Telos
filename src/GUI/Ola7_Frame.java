@@ -598,15 +598,12 @@ public class Ola7_Frame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        Ola7_Frame myFrame;
-               // do
-               // {
+        Ola7_Frame myFrame=this;
+              
                   
-                 //   PlayerDialog dialog=new PlayerDialog(new Ouggriko_Frame());         //edo!!!!!!
-                 //   myFrame=new Ouggriko_Frame(dialog.getPlayers());                    //  allaxes!!!!
-                    dispose();
-                    myFrame=new Ola7_Frame(myPlayers);      //ayto bgale
-                    myFrame.setVisible(true);
+                
+                 //   myFrame=new Ola7_Frame(myPlayers);      //ayto bgale
+                 //   myFrame.setVisible(true);
                     
                     
                do{
@@ -615,17 +612,18 @@ public class Ola7_Frame extends javax.swing.JFrame {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Ouggriko_Frame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                    try {
+                Thread.sleep(10000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Ouggriko_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
                    if(myFrame.round.gameIsOver()==false)
                    {
                        myFrame.dispose();
                        myFrame=new Ola7_Frame(myFrame.getMyPlayers());
                        myFrame.setVisible(true);
                    }
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Ouggriko_Frame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           
 
                 }
                 while(myFrame.round.gameIsOver()==false);

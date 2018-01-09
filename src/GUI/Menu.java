@@ -133,24 +133,40 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelTopMouseClicked
 
     private void jButtonHungarianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHungarianActionPerformed
-  JFrame a=new JFrame();
+        
+        Thread thread=new Thread(new Runnable(){
+           
+
+            @Override
+            public void run() {
+        JFrame a=new JFrame();
         PlayerDialog tade=new PlayerDialog(a);
         ArrayList<Player> o=tade.getPlayers();
         a.dispose();
         Ouggriko_Frame x=new Ouggriko_Frame(o);
-        x.playGame();
+        x.playGame();            }
+        });
+        thread.start();
      
      
       
     }//GEN-LAST:event_jButtonHungarianActionPerformed
 
     private void jButtonAll7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAll7ActionPerformed
-       JFrame a=new JFrame();
-        PlayerDialog tade=new PlayerDialog(a);
-        ArrayList<Player> o=tade.getPlayers();
-        a.dispose();
-        Ola7_Frame x=new Ola7_Frame(o);
-        x.playGame();
+       Thread thread=new Thread(new Runnable(){
+           @Override
+           public void run() {
+            JFrame a=new JFrame();
+            PlayerDialog tade=new PlayerDialog(a);
+            ArrayList<Player> o=tade.getPlayers();
+            a.dispose();
+            Ola7_Frame x=new Ola7_Frame(o);
+            x.playGame();           
+        }
+           
+       });
+       thread.start();
+        
     }//GEN-LAST:event_jButtonAll7ActionPerformed
 
    

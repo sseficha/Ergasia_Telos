@@ -464,27 +464,7 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
      */
     public void playGame(){//static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ouggriko_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ouggriko_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ouggriko_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ouggriko_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+      
 
         /* Create and display the form */
        // java.awt.EventQueue.invokeLater(new Runnable() {
@@ -498,16 +478,13 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
              //       myFrame=new Ouggriko_Frame(myPlayers);      //ayto bgale
              //       myFrame.setVisible(true);
                     
-              // Ouggriko_Frame myFrame=null;
-              dispose();
-                Ouggriko_Frame myFrame;
-               // do
-               // {
-                  
-                 //   PlayerDialog dialog=new PlayerDialog(new Ouggriko_Frame());         //edo!!!!!!
-                 //   myFrame=new Ouggriko_Frame(dialog.getPlayers());                    //  allaxes!!!!
-                    myFrame=new Ouggriko_Frame(myPlayers);      //ayto bgale
-                    myFrame.setVisible(true);
+              
+             // dispose();
+               // Ouggriko_Frame myFrame;
+               Ouggriko_Frame myFrame=this;
+             
+                  //  myFrame=new Ouggriko_Frame(myPlayers);      //ayto bgale
+                   // myFrame.setVisible(true);
                     
                     
                do{
@@ -516,17 +493,16 @@ public class Ouggriko_Frame extends javax.swing.JFrame {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Ouggriko_Frame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                   
+                   
+                   
                    if(myFrame.round.gameIsOver()==false)
                    {
                        myFrame.dispose();
                        myFrame=new Ouggriko_Frame(myFrame.getMyPlayers());
                        myFrame.setVisible(true);
                    }
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Ouggriko_Frame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
 
                 }
                 while(myFrame.round.gameIsOver()==false);
